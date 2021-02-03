@@ -1,7 +1,7 @@
 const {mysqlx} = require('./mysqlconnection')
 const {config} = require('./mysqlconnection')
 const {config2} = require('./mysqlconnection')
-const {card}= require('./resources/card/card.router')
+const {card}= require('./resources/card/card.model')
 //INSERT CARD
 console.log(card)
 const insertCard = (req, res )=> {
