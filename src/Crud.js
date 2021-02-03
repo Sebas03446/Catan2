@@ -1,9 +1,10 @@
 const {mysqlx} = require('./mysqlconnection')
 const {config} = require('./mysqlconnection')
 const {config2} = require('./mysqlconnection')
-const {card}= require('./resources/card/card.model')
+const {Card}= require('./resources/card/card.model')
 //INSERT CARD
-console.log(card)
+console.log(Card);
+const card1 = new Card('prueba',15);
 const insertCard = (req, res )=> {
     try{
         mysqlx.getSession({ user: config.user , password: config.password})
@@ -13,7 +14,7 @@ const insertCard = (req, res )=> {
                     .then(() => {
                         const table = session.getSchema(config.schema).getTable(config.table);
                         return table.insert('card_description', 'card_number')
-                            .values(card.description, card.number)
+                            .values(card1.description, card1.number)
                             .execute()
                             .then(() => {
                                 return session.close();
