@@ -7,7 +7,8 @@ app.use(bodyParser.json());
 const port = 3000;
 
 const log = (req, res, next) => {
-    next();
+  
+  next();
 
 }
 app.use('/v1',cardRouter)
