@@ -1,6 +1,6 @@
 
 const express = require('express');
-const {insertCard, showCard, updateCard}=require('../../Crud');
+const {insertCard, showCard, updateCard, deleteCard}=require('../../Crud');
 const cardRouter = express.Router();
 
 
@@ -13,6 +13,7 @@ cardRouter
     .get(showCard)
     .post(insertCard)
     .put(updateCard)
+    .delete(deleteCard)
 
 module.exports = {
     cardRouter : cardRouter

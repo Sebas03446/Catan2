@@ -78,9 +78,30 @@ const updateCard = (req, res )=> {
         console.log(error);
     }
 }
+//delete card--delete
+const deleteCard = (req, res )=> {
+    try{
+ 
+        mysqlx.getSession({ user: config.user , password: config.password})
+            .then(session => {
+                const {card_id } = req.body;
+                return session.sql(`DELETE FROM Catan.cards WHERE card_id = ${card_id};`)
+                    .execute()
+                    .then(() => {
+                                return session.close();
+                                });
+                    });
+           // });
+        
+         res.send('Se ha eliminado la carta');
+    }catch(error){
+        console.log(error);
+    }
+}
 module.exports = {
     insertCard: insertCard,
     showCard:showCard,
-    updateCard:updateCard
+    updateCard:updateCard,
+    deleteCard:deleteCard
     
 }
