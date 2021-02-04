@@ -98,7 +98,7 @@ const deleteCard = (req, res )=> {
         console.log(error);
     }
 }
-//Generator 10 cards
+//Generator 11 cards
 const genCard = (req, res )=> {
     try{
         mysqlx.getSession({ user: config.user , password: config.password})
