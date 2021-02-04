@@ -98,10 +98,44 @@ const deleteCard = (req, res )=> {
         console.log(error);
     }
 }
+//Generator 10 cards
+const genCard = (req, res )=> {
+    try{
+        mysqlx.getSession({ user: config.user , password: config.password})
+            .then(session => {
+                return session.sql(`SELECT * FROM Catan.cards`)
+                    .execute()
+                    .then(() => {
+                        const table = session.getSchema(config.schema).getTable(config.table);
+                        return table.insert('card_description', 'card_number')
+                            .values("Asalto del ladrón", 7)
+                            .values("Epidemia",8)
+                            .values("Terremoto",6)
+                            .values("Buenos vecinos ",6)
+                            .values("Torneo de caballeros",5)
+                            .values("Beneficio comercial",5)
+                            .values("Mar en calma",9)
+                            .values("El ladrón se retira",4)
+                            .values("Ayuda vecinal",10)
+                            .values("Conflicto",3)
+                            .values("Año abundante",2)
+                            .execute()
+                            .then(() => {
+                                return session.close();
+                                });
+                    });
+            });
+        res.send('Guardadado exitosamente las 11 cartas');
+        
+    }catch(error){
+        console.log(error);
+    }
+}
 module.exports = {
     insertCard: insertCard,
     showCard:showCard,
     updateCard:updateCard,
-    deleteCard:deleteCard
+    deleteCard:deleteCard,
+    genCard:genCard
     
 }
