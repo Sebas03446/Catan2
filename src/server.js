@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {cardRouter} = require('./resources/card/card.router')
+const {deckRouter}=require('./resources/deck/deck.router')
 const {mysqlx} = require('./mysqlconnection')
 const app = express();
 app.use(bodyParser.json());
@@ -12,7 +13,7 @@ const log = (req, res, next) => {
 
 }
 app.use('/v1',cardRouter)
-
+app.use('/v1',deckRouter)
 function start(){
   try{  
   app.listen(port, () => {

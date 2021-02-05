@@ -50,7 +50,7 @@ mysqlx.getSession({ user: config.user , password: config.password})
             .then(() => {
                 
                 return session.sql(`create table if not exists ${config.schema}.${config2.table} (deck_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT
-                                    , card_id INTEGER UNSIGNED)`)
+                                    , card_id INTEGER UNSIGNED,card_id1 INTEGER UNSIGNED,card_id2 INTEGER UNSIGNED,card_id3 INTEGER UNSIGNED,card_id4 INTEGER UNSIGNED)`)
                        .execute()
             })
             .then(() => {
