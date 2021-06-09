@@ -7,16 +7,15 @@ const app = express();
 app.use(bodyParser.json());
 const port = 3000;
 const path = require('path')
-const log = (req, res, next) => {
-  
-  next();
-
-}
+//Route static elements
 app.use(express.static('src/public'))
+//Configuration template engine pug
 app.set('views', path.join(__dirname,'/views'))
 app.set('view engine', 'pug')
+//routes
 app.use('/',cardRouter)
 app.use('/v1',deckRouter)
+//server start
 function start(){
   try{  
   app.listen(port, () => {

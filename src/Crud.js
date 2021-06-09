@@ -15,10 +15,7 @@ const showCard = (req, res )=> {
                     })
                     .then(result =>{
                         const listCards = result.fetchAll();
-                        //res.send(listCards);
-                        console.log(listCards[0][1])
-                        //res.sendFile("/public/index.pug",{root: __dirname })
-                        res.render('index.pug',{
+                        res.render('index.pug',{   //Render template index and send the parameters of title of card1 and card2.
                             title:listCards[0][1],
                         title2:listCards[1][1]})
                     }).then(() => {
@@ -138,3 +135,5 @@ module.exports = {
     genCard:genCard
     
 }
+
+                        //res.sendFile("/public/index.pug",{root: __dirname }) sentencia para enviar archivos
