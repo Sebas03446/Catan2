@@ -1,0 +1,109 @@
+
+    @font-face {
+    font-family: "Book antiqua";
+    src: url(../book-antiqua-4.ttf);
+    }
+    body{
+    background: #3C5377;
+    }
+    .maincontainer{
+    position: absolute;
+    width: 250px;
+    height: 320px;
+    background: none;
+    top: 200px;
+    left: 200px;
+    transform: translate(-50%,-50%);
+    }
+    .thecard{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    background: yellow;
+    }
+    .thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #ffc728;
+    color: rgb(206, 193, 13);
+    text-align: center;
+    font-family: 'Book antiqua';
+    border-radius: 20px;
+    font-size: 50px;
+    background-image: url("../catan-background.webp");
+    }
+    .thefront p{
+        padding-top: 70px;
+    }
+    .theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #BAA474;
+    color: #fff;
+    transform: rotateY(180deg);
+    text-align: center;
+    font-family: 'Book antiqua';
+    border-radius: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    }
+    .theback h1{
+        font-size: 25px;
+    }
+    .thecard:hover{
+    transform: rotateY(180deg);
+    }
+    .thecard2{
+        position: relative;
+        top: -318px;
+        left: 350px;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        transform-style: preserve-3d;
+        transition: all 0.5s ease;
+        background: yellow;
+    }
+    .thefront2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #ffc728;
+    color: rgb(206, 193, 13);
+    text-align: center;
+    font-family: 'Book antiqua';
+    border-radius: 20px;
+    font-size: 50px;
+    background-image: url("../catan-background.webp");
+    }
+    .thefront2 p{
+        padding-top: 70px;
+    }
+    .theback2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #BAA474;
+    color: #fff;
+    transform: rotateY(180deg);
+    text-align: center;
+    font-family: 'Book antiqua';
+    border-radius: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    }
+    .theback2 h1{
+        font-size: 25px;
+    }
+    

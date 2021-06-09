@@ -4,8 +4,6 @@ const {config2} = require('./mysqlconnection')
 const {Card}= require('./resources/card/card.model')
 // Mostrar cartas
 const showCard = (req, res )=> {
-    try{
- 
         mysqlx.getSession({ user: config.user , password: config.password})
             .then(session => {
                 return session.sql(`SELECT * FROM Catan.cards`)
@@ -15,25 +13,29 @@ const showCard = (req, res )=> {
                         return table.select()
                             .execute()
                     })
-                    .then(res =>{
-                          console.log(res.fetchAll()); // Aqui se muestra los datos en la tabla
-                    })        
-                            .then(() => {
+                    .then(result =>{
+                        const listCards = result.fetchAll();
+                        //res.send(listCards);
+                        console.log(listCards[0][1])
+                        //res.sendFile("/public/index.pug",{root: __dirname })
+                        res.render('index.pug',{
+                            title:listCards[0][1],
+                        title2:listCards[1][1]})
+                    }).then(() => {
                                 return session.close();
                                 });
-                    });
-           // });
+                    }).catch(function (err) {
+                        console.log(err);
+                        res.send('No se ha podido responder a la solicitud ');
+                    }
+                    );
         
-         res.send('Ver la consola .....');
-    }catch(error){
-        console.log(error);
-    }
 }
 
 //INSERT CARD
 console.log(Card);
 const insertCard = (req, res )=> {
-    try{
+    
         mysqlx.getSession({ user: config.user , password: config.password})
             .then(session => {
                 return session.sql(`SELECT * FROM Catan.cards`)
@@ -51,10 +53,7 @@ const insertCard = (req, res )=> {
                     });
             });
         res.send('Guardada exitosamente');
-        
-    }catch(error){
-        console.log(error);
-    }
+    
 }
 //update card--put
 const updateCard = (req, res )=> {

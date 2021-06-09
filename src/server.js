@@ -6,13 +6,16 @@ const {mysqlx} = require('./mysqlconnection')
 const app = express();
 app.use(bodyParser.json());
 const port = 3000;
-
+const path = require('path')
 const log = (req, res, next) => {
   
   next();
 
 }
-app.use('/v1',cardRouter)
+app.use(express.static('src/public'))
+app.set('views', path.join(__dirname,'/views'))
+app.set('view engine', 'pug')
+app.use('/',cardRouter)
 app.use('/v1',deckRouter)
 function start(){
   try{  
