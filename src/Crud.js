@@ -3,7 +3,7 @@ const {config} = require('./mysqlconnection')
 const {config2} = require('./mysqlconnection')
 const {Card}= require('./resources/card/card.model')
 // Mostrar cartas
-const showCard = (req, res )=> {
+/* const showCard = (req, res )=> {
         mysqlx.getSession({ user: config.user , password: config.password})
             .then(session => {
                 return session.sql(`SELECT * FROM Catan.cards`)
@@ -27,10 +27,22 @@ const showCard = (req, res )=> {
                     }
                     );
         
+} */
+const showCard = async (req, res) => {
+    const session_sql = await mysqlx.getSession({ user: config.user , password: config.password});
+    const session_squema = await session_sql.sql(`SELECT * FROM Catan.cards`).execute();
+    const listCards = session_squema.fetchAll();
+    try{
+        res.render('index.pug',{   //Render template index and send the parameters of title of card1 and card2.
+        title:listCards[0][1],
+        title2:listCards[50][1]})
+    }catch(err){
+        res.render('error.pug')
+    }
+    session_sql.close()
 }
 
 //INSERT CARD
-console.log(Card);
 const insertCard = (req, res )=> {
     
         mysqlx.getSession({ user: config.user , password: config.password})
