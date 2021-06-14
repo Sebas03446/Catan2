@@ -1,22 +1,29 @@
-
 const express = require('express');
-const {insertCard, showCard, updateCard, deleteCard,genCard}=require('../../Crud');
+const {insertCardget,insertCard, showCard, updateCard,updateCardget, deleteCard,deleteCardget,genCard,showMenu}=require('../../Crud');
 const cardRouter = express.Router();
-
-
-const mockController = (req, res) => {
-    res.json({ message: 'ok' })
-    
-  }
 cardRouter
     .route('/')
-    .get(showCard)
-    .post(insertCard)
-    .put(updateCard)
-    .delete(deleteCard)
+    .get(showMenu)
 cardRouter
     .route('/gencards')
     .post(genCard)
+cardRouter
+    .route('/cards')
+    .get(showCard)
+    .post(insertCard)
+    .delete(deleteCard)
+cardRouter
+    .route('/cards/create')
+    .get(insertCardget)
+    .post(insertCard)
+cardRouter
+    .route('/cards/update')
+    .get(updateCardget)
+    .post(updateCard)
+cardRouter
+    .route('/cards/delete')
+    .get(deleteCardget)
+    .post(deleteCard)
 module.exports = {
     cardRouter : cardRouter
 }

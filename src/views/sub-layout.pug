@@ -1,0 +1,15 @@
+extends layout.pug
+block head
+    link(rel='stylesheet', href="/css/style-card.css")
+block content
+    main.maincontainer
+        .thecard
+            .thefront
+                div(class="thefront") 
+                    p(style='font-family: Book antiqua; font-size: 25px;') CATAN
+            .theback 
+                    h1 #{title}
+        button.decks Decks
+        button.crud Crud 
+    block scripts
+    script(src="/scripts/app.js") 

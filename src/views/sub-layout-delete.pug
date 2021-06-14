@@ -1,0 +1,11 @@
+extends layout.pug
+block head
+    link(rel='stylesheet' href="/css/style-card-create.css")
+    title create
+block content
+    main.maincontainer
+        form.formato(id="form")
+            input.input(type='id' name='id' placeholder='ID card' autofocus='')
+            input(type="submit", value="submit")
+    block scripts
+    script(src="/scripts/app-delete.js") 

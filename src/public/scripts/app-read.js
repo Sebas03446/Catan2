@@ -18,8 +18,3 @@ card2.addEventListener('mouseout', function () {
     card2.style.cssText = 'transform: rotateY(0deg);'
     console.log("El mouse esta fuera del botón");
 }) */
-const crud_bottom = document.querySelector('.crud')
-crud_bottom.addEventListener('click', function(){
-    console.log("se ha dado un click")
-    window.location.replace('http://localhost:3000/v1/')
-})

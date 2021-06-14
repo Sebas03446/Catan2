@@ -1,0 +1,14 @@
+extends layout.pug
+block head
+    link(rel='stylesheet', href="/css/style-card3.css")
+block content
+    main.maincontainer
+        each stuff in stuffs 
+            .thecard
+                .thefront
+                    div(class="thefront") 
+                        p(style='font-family: Book antiqua; font-size: 25px;') CATAN
+                .theback 
+                        h1 #{stuff[1]}
+    block scripts
+    script(src="/scripts/app-read.js") 
