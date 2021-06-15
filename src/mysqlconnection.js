@@ -31,7 +31,8 @@ mysqlx.getSession({ user: config.user , password: config.password})
             .then(() => {
                 return session.close();
             });
-});    
+});
+    
 module.exports= {
     mysqlx: mysqlx,
     config:config,

@@ -79,25 +79,33 @@ const deleteCard = async (req,res) =>{
     res.send('Se ha eliminado la carta')
 }
 //Generator 11 cards
-const genCard =async (req,res)=>{
-    const session_sql = await mysqlx.getSession({ user: config.user , password: config.password});
-    const table = session_sql.getSchema(config.schema).getTable(config.table);
-    table.insert('card_description', 'card_number')
-        .values("Asalto del ladrón", 7)
-        .values("Epidemia",8)
-        .values("Terremoto",6)
-        .values("Buenos vecinos ",6)
-        .values("Torneo de caballeros",5)
-        .values("Beneficio comercial",5)
-        .values("Mar en calma",9)
-        .values("El ladrón se retira",4)
-        .values("Ayuda vecinal",10)
-        .values("Conflicto",3)
-        .values("Año abundante",2)
-        .execute()
-    session_sql.close()
-    res.send('Guardadado exitosamente las 11 cartas');
-
+const genCard =async (req,res,next)=>{
+    try{
+        const session_sql = await mysqlx.getSession({ user: config.user , password: config.password});
+        const session_squema = await session_sql.sql(`SELECT * FROM Catan.cards`).execute();
+        const listCards = session_squema.fetchAll();
+        session_sql.close();
+        const LENGTH_CARDS = listCards.length
+        const card = listCards[LENGTH_CARDS-1][1]
+    }catch(err){
+        const session_sql = await mysqlx.getSession({ user: config.user , password: config.password});
+        const table = session_sql.getSchema(config.schema).getTable(config.table);
+        table.insert('card_description', 'card_number')
+            .values("Asalto del ladrón", 7)
+            .values("Epidemia",8)
+            .values("Terremoto",6)
+            .values("Buenos vecinos ",6)
+            .values("Torneo de caballeros",5)
+            .values("Beneficio comercial",5)
+            .values("Mar en calma",9)
+            .values("El ladrón se retira",4)
+            .values("Ayuda vecinal",10)
+            .values("Conflicto",3)
+            .values("Año abundante",2)
+            .execute()
+        session_sql.close()
+    }
+    next()
 }
 module.exports = {
     insertCard: insertCard,

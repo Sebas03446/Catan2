@@ -4,6 +4,7 @@ const {cardRouter} = require('./resources/card/card.router')
 const {deckRouter}=require('./resources/deck/deck.router')
 const {hostRouter}=require('./resources/host/host.router')
 const {mysqlx} = require('./mysqlconnection')
+const {genCard} = require('./Crud')
 const app = express();
 const port = 3000;
 const path = require('path')
@@ -16,7 +17,7 @@ app.use(express.json())
 app.set('views', path.join(__dirname,'/views'))
 app.set('view engine', 'pug')
 //routes
-app.use('/',hostRouter)
+app.use('/',genCard,hostRouter)
 app.use('/v1',cardRouter)
 app.use('/v1',deckRouter)
 //server start
