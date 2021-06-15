@@ -10,7 +10,7 @@
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-cd Catancards
+cd Catan2-master
 npm i
 ```
 
