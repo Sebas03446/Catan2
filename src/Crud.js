@@ -40,6 +40,7 @@ const insertCardget = async (req, res) =>{
 const insertCard = async (req, res) =>{
     const session_sql = await mysqlx.getSession({ user: config.user , password: config.password});
     const session_squema = await session_sql.getSchema(config.schema).getTable(config.table);
+    console.log(req.body)
     const {number,description} = req.body;
     const card1 = new Card(description, number);
     try{
@@ -47,7 +48,6 @@ const insertCard = async (req, res) =>{
         const session_squema2 = await session_sql.sql(`SELECT * FROM Catan.cards`).execute();
         const listCards = session_squema2.fetchAll();
         const LENGTH_CARDS = listCards.length
-        console.log(LENGTH_CARDS)
         res.send('Se ha creado la carta')
     }catch(err){
         res.send('NO, se ha guardado la carta')
@@ -61,7 +61,6 @@ const updateCardget = async (req, res) =>{
 const updateCard = async (req, res)=>{
     const session_sql = await mysqlx.getSession({ user: config.user , password: config.password})
     const {card_id , number,description} = req.body;
-    console.log(req.body)
     const card1 = new Card(description, number);
     session_sql.sql(`UPDATE Catan.cards SET card_description = \'${card1.description}\' , card_number = ${card1.number} WHERE card_id = ${card_id};`).execute()
     session_sql.close()

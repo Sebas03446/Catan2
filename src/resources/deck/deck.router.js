@@ -1,21 +1,21 @@
 
 const express = require('express');
 const {genDecks}=require('../../functionDeck');
-const {showDeck, insertDeck,updateDeck,deleteDeck} = require('../../deckCrud')
+const {showDeck, insertDeck,updateDeck,deleteDeck,decks_index} = require('../../deckCrud')
 const deckRouter = express.Router();
 
 
 
 deckRouter
     .route('/decks')
-    .get(showDeck)
+    .get(decks_index)
+    .post(genDecks)
     /* .post(insertDeck)
     .put(updateDeck) */
     .delete(deleteDeck)
-
 deckRouter
-    .route('/gendecks')
-    .post(genDecks)
+    .route('/decks/players')
+    .get(showDeck)
 module.exports = {
     deckRouter : deckRouter
 }

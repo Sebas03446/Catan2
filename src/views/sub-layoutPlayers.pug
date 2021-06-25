@@ -1,0 +1,17 @@
+extends layout.pug
+block head
+    link(rel='stylesheet' href="/css/style-cardPlayers.css")
+    title create
+block content
+    -var count=0
+    main.maincontainer
+        each stuff in stuffs 
+            each card in stuff
+                .thecard
+                    .thefront
+                        div(class="thefront") 
+                            p(style='font-family: Book antiqua; font-size: 25px;') CATAN
+                    .theback 
+                        h1 #{card.card[1]}
+            h1.player Jugador #{count+=1}
+    block scripts 

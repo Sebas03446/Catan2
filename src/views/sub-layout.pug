@@ -9,7 +9,9 @@ block content
                     p(style='font-family: Book antiqua; font-size: 25px;') CATAN
             .theback 
                     h1 #{title}
-        button.decks Decks
-        button.crud Crud 
+        button.decks 
+            a(href='v1/decks') Decks
+        button.crud 
+            a(href='v1/') Crud  
     block scripts
     script(src="/scripts/app.js") 

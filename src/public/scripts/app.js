@@ -21,5 +21,9 @@ card2.addEventListener('mouseout', function () {
 const crud_bottom = document.querySelector('.crud')
 crud_bottom.addEventListener('click', function(){
     console.log("se ha dado un click")
-    window.location.replace('http://localhost:3000/v1/')
+})
+const deck_bottom = document.querySelector('.decks')
+deck_bottom.addEventListener('click', function(){
+    console.log("se ha dado un click")
+
 })

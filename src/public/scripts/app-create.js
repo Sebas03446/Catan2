@@ -1,4 +1,4 @@
-const formato = document.querySelector('#form')
+/*const formato = document.querySelector('#form')
 formato.addEventListener('submit', (evento)=>{
     evento.preventDefault()
     const data1=new FormData(formato)
@@ -23,4 +23,4 @@ formato.addEventListener('submit', (evento)=>{
     }).catch(function (error){
         console.log(error)
     })
-})
+})*/

@@ -9,9 +9,14 @@ block content
                     p(style='font-family: Book antiqua; font-size: 25px;') CATAN
             .theback 
                     h1 #{title}
-        button.create Create
-        button.read Read
-        button.update Update
-        button.delete Delete
+        button.create 
+            a(href="/v1/cards/create") Create 
+        button.read 
+            a(href="/v1/cards") Read
+        button.update
+            a(href="/v1/cards/update") Update 
+        button.delete 
+            a(href="/v1/cards/delete") Delete
+        h1 Al voltear la carta está debe ser la última en agregarse 
     block scripts
     script(src="/scripts/app-crud.js") 

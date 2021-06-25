@@ -25,17 +25,32 @@ mysqlx.getSession({ user: config.user , password: config.password})
             .then(() => {
                 
                 return session.sql(`create table if not exists ${config.schema}.${config2.table} (deck_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT
-                                    , card_id INTEGER UNSIGNED,card_id1 INTEGER UNSIGNED,card_id2 INTEGER UNSIGNED,card_id3 INTEGER UNSIGNED,card_id4 INTEGER UNSIGNED)`)
+                                    , card_id JSON)`)
                        .execute()
             })
             .then(() => {
                 return session.close();
             });
 });
-    
+function createDatabase (){ mysqlx.getSession({ user: config.user , password: config.password})
+                            .then(session => {
+                                return session.sql(`create database if not exists ${config.schema}`)
+                                    .execute()
+                                    .then(() => {
+                                        
+                                        return session.sql(`create table if not exists ${config.schema}.${config2.table} (deck_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT
+                                                            , card_id JSON)`)
+                                            .execute()
+                                    })
+                                    .then(() => {
+                                        return session.close();
+                                    });
+                            });
+                        }
 module.exports= {
     mysqlx: mysqlx,
     config:config,
-    config2:config2
+    config2:config2,
+    createDatabase
 }     
 

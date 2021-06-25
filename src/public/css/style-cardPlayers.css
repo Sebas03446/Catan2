@@ -63,6 +63,11 @@
     .thecard:hover{
     transform: rotateY(180deg);
     }
+    h1.player{
+        top: 70%;
+        left: 50%;
+        position: relative;
 
+    }
     
     

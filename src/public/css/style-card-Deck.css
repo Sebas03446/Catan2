@@ -1,0 +1,19 @@
+
+    @font-face {
+        font-family: "Book antiqua";
+        src: url(../book-antiqua-4.ttf);
+        }
+        body{
+        background: #3C5377;
+        }
+        .maincontainer{
+        position: absolute;
+        width: 250px;
+        height: 320px;
+        background: none;
+        top: 200px;
+        left: 200px;
+        transform: translate(-50%,-50%);
+        display: ruby;
+        }
+        
