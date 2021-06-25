@@ -4,7 +4,7 @@ block head
     title create
 block content
     main.maincontainer
-        form.formato(id="form")
+        form.formato(id="form" method='POST' action='/v1/cards/update')
             input.input(type='id' name='id' placeholder='ID card' autofocus='')
             input.input(type='number' name='number' placeholder='Card number' autofocus='')
             input.input(type='text' name='description' placeholder='Card description')
